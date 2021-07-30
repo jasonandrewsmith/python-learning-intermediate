@@ -249,3 +249,60 @@ for k, v in something.items():
 # Protocols
 - requirements of behavior for a certain class of objects
 - does not have to be a separate piece of code
+
+# Exceptions and Control Flow
+- `try except` 
+- Certain exceptions are never caught (syntax related errors)
+- can use `pass` keyword to just continue the code execution
+- `raise` will raise the exception that is being handled
+  - basically `throw`
+- also has support for finally block
+  
+# Avoid Explicit Type Checks
+- Defeats purpose of dynamic typing
+- Catching them or throwing them not really needed
+- Usually they end up being thrown anyway
+
+# LBYL vs EAFP
+- Look before you leap vs Easier to ask for fogiveness than permission
+- Python perfers EAFP
+- The codes happy path is emphasized rather than being interspersed with error handling
+- Basically catch exceptions rather than do checks beforehand
+- Exceptions can't be easily ignored, and make it harder for problems to silently be ignored
+
+# Platform Specific Modules
+- Windows msvcrt or Unix-like tty for things like detecting a key press
+
+# List and set comprehensions 
+- Comprehensions: concise syntax for describing lists, sets, and dictionaries
+  - Readable and expressive
+- `[len(word) for word in words]`
+  - Allows you to create a list where each item is the length of the original item in the ither list
+- syntax is basically `[expr(item) for item in iterable]`
+- can do the same thing with sets but with `{}`
+
+# Dictionary Comprehensions
+- Also uses curly braces but has two parameters separated by `:`
+
+# Filtering Comprehensions
+- Need to review these, can be pretty complex
+- Sometimes a for loop can be more consise
+- Shouldn't have side effects
+
+# Iteration Protocols 
+- `iterable`: can be passed to `iter()` to produce an `interator`
+- `iterator`: can be passed to `next()` to get the next value in the sequence
+- `next()` will through an exception when the end of the collection is reached
+
+# Generator Functions 
+- Iterables defined by functions, model sequences with no definite end
+- Must include a yield statement
+- May include blank return
+```py
+  def gen123():
+    yield 1
+    yield 2
+    yield 3
+  g = gen123()
+  next(g) # returns 1 then 2 then 3
+```
