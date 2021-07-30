@@ -1,38 +1,38 @@
 # Core Python - Getting Started
 
-## Zen of Python
+# Zen of Python
 - Flat is better than nested
 - Practicality beats purity
 - There should only be one obvious way to do something
 - Sparse is better than dense
   - 2 Lines between functions according to PEP8
 
-## Scalar Types
+# Scalar Types
 - int
 - float
 - bool
 - None
 
-## int
+# int
 - Always round down
 - `int()` constructor can be passed floats, strings
 - can write numbers in hex, octal, and binary literally
 - other bases can be used with second constructor parameter
 
-## float
+# float
 - `float()` constructor can be passed ints, string, scientific notation
 - all decimals are seen as this type
 
-## bool
+# bool
 - `True` or `False`
 - `bool()` can be passed different types and will determine result based on falsiness
 
-## None
+# None
 - essentially null
 - variables can be set to it 
 - checked with `is` or `==`
 
-## While Loops
+# While Loops
 ``` 
 while True: 
     ...
@@ -45,13 +45,13 @@ while True:
 - Python has no means of a do-while loop
 - Interupt the repl with `ctrl+c`
   
-## Collections
+# Collections
 - str
 - bytes
 - list
 - dict
 
-## str
+# str
 - Immutable, sequence of unicode code points
 - Single or double quotes
   - Be consistent!
@@ -63,13 +63,13 @@ while True:
 - Constructor can be passed other types for string version
 - UTF-8 unicode
 
-## bytes
+# bytes
 - raw binary type
 - `b'data'`
 - There is a constructor but that's an advanced topic
 - `str` -> encode -> `bytes` -> decode
 
-## list
+# list
 - sequences of objects
 - mutable
 - `[1,2,3]`
@@ -77,46 +77,46 @@ while True:
 - add with `append()`
 - can pass string to contructor to make list version of string
 
-## dict
+# dict
 - fundamental to python
 - access a key via `[key_name]`
 - As of 3.7 keys stay in insertion order, older version have no concept of this 
   
-## For Loops
+# For Loops
 - essentially a for each
 
-## Functions and Modules
+# Functions and Modules
 - special functions have `__name__`
 - can be called "dunder"
 - `__main__` means that the module is being run directly
   - If not equal to `__main__` it means that it's being imported
 - Python files are modules by default
 
-## Python Execution Model
+# Python Execution Model
 - `def` is a statment
 - Top level functions are defined when a module is imported or run
   
-## Command Line Arguments
+# Command Line Arguments
 ```python
 import sys
 sys.argv[1]
 ```
 
-## docstrings
+# docstrings
 - literal strings that document functions, modules, and classes
 - They must be the first statement in the blocks for these constructs
 - Sphinx can be used to create HTML docs from these strings
 
-## Comments
+# Comments
 - Use #
 
-## Shebang
+# Shebang
 - `#!/usr/bin/env python`
 - can say if it's 2 or 3
 - allows for direct execution on unix like systems
 - windows can use pylauncher to achieve the same functionality
 
-## Objects and Types
+# Objects and Types
 - Has as garbage collector
 - Reassigning variables
   - uses references to assign variables to memory
@@ -306,3 +306,53 @@ for k, v in something.items():
   g = gen123()
   next(g) # returns 1 then 2 then 3
 ```
+- they can be used as any other iterable
+- will also throw an exception judt like any other iterable
+- code inside of a generator function will stop at each yield for each call
+- lazy execution allows for generation of very large sequences
+- allows for returning of different values based on how many times it has been called
+
+# Generator Expressions
+- cross between generators and comprehensions
+- ???
+
+# Iteration Tools
+- Python treats iteration as core idea
+- Has many ways to do it
+- `itertools.islice()`: performs lazy slicing of any iterator
+- `itertools.count()`: open ended version of `range()`
+- `any() and all()`: tell you if any/all numbers in an iterable are true
+- `zip()`: zips iteration between two iterables
+  - returns tuples, can be unpacked
+
+# Classes
+- Create custom types, although you can get pretty far without them 
+- can use `type()` to find the class of an object
+- python allows you to find the right balance of OOP and functional to solve problems with the right approach
+- names have convetion of Camel case
+- `pass` allows you to have a class that is minimally syntactically correct
+- importing would be like `from <FILE> import <CLASS>`
+- `self` is parameter used for instance functions
+- `__init__()`: kinda like a constructor
+  - difference is that it configures an object that already exists
+  - python runtime takes care of actually creating the object
+- attributes can be created at initialization just like regular variables
+- attributes typically start with an underscore
+  - prevents name clashes and is a convention
+- in python is that everything is public
+  - basically don't use things prefixed with `_`
+- class invariants: truth about an object that endure for its lifetime
+- getters are named after the property they retrieve
+
+# Duck Typing
+- cornerstone of python's typing system
+- fitness for use is determined at use
+- could have several classes that look like they would have a shared inherited class but with python you don't need to explicitly do that
+- as long as behavior is consistent it will work
+
+# Late Binding and Inheritance
+- Polymorphism can be done with any classes as long as they fit due to the late binging
+  - basis of collections in python actually
+- often used in python for sharing implementation
+- `class Boeing(Aircraft):`
+- duck typing allows for a looser typing
